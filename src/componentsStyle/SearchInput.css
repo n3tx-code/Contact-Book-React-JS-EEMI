@@ -1,0 +1,11 @@
+#search input {
+    padding: 7px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #c3c3c3;
+}
+
+#search input:focus-visible {
+    outline: none;
+    border-bottom: 1px solid #387ad5;
+}
