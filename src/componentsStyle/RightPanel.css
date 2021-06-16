@@ -18,3 +18,12 @@
     left: -20px;
     top: 10px;
 }
+
+#contact-delete button {
+    color: #ff5a5a;
+    font-size: 14px;
+}
+
+#contact-delete {
+    padding: 0px;
+}

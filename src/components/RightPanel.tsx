@@ -62,7 +62,20 @@ function RightPanel(props: any) {
             }
 
         } catch (err) {
-            console.log(err)
+            alert('Mauvaise réponse du serveur')
+        }
+    }
+
+    const deleteHandler = async () => {
+        try {
+            let response = await fetch('http://localhost:3004/contacts/' + props.state.contactRightPanel.id, {
+                method: 'DELETE',
+            });
+            if (response.ok) {
+                props.updateContactList(getContacts());
+                handleClose();
+            }
+        } catch (err) {
             alert('Mauvaise réponse du serveur')
         }
     }
@@ -76,7 +89,19 @@ function RightPanel(props: any) {
                     <Button variant="dark" id={'right-panel-close'} onClick={() => handleClose()}>X</Button>
                     <h2>
                         {props.state.contactRightPanel
-                            ? "Modify " + props.state.contactRightPanel.name + " " + props.state.contactRightPanel.forname
+                            ?
+                            <div>
+                                <Row>
+                                    <Col>
+                                        Modify {props.state.contactRightPanel.name} {props.state.contactRightPanel.forname}
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col id={"contact-delete"}>
+                                        <Button variant="link" onClick={deleteHandler}>Delete</Button>
+                                    </Col>
+                                </Row>
+                            </div>
                             : "Add contact"
                         }
                     </h2>

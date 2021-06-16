@@ -28,9 +28,10 @@ function ContactList(props: any) {
                 <div key={id} className={'row'}>
                     <div className={"col-12 contact-wrapper animate__animated animate__fadeIn"}
                          onClick={() => props.openRightPanel(contact)}>
-                        {contact.name} {contact.forname}<br/>
-                        <a href={"mailto:" + contact.email}> {contact.email}</a><br/>
-                        {contact.birthDate}
+                        <h5>{contact.name} {contact.forname}</h5><br/>
+                        {contact.birthDate}<br/>
+                        <a href={"mailto:" + contact.email}>{contact.email}</a><br/>
+                        <a href={"tel:" + contact.phone}>{contact.phone}</a>
                     </div>
                 </div>
             )}
