@@ -35,7 +35,7 @@ function App() {
                             <NewContactButton openRightPanel={rightPanel}/>
                         </Col>
                     </Row>
-                    <Row>
+                    <Row id={"contact-list-row"}>
                         <Col lg={{span: 12}}>
                             <ContactList state={state} setContacts={setContacts} openRightPanel={rightPanel}/>
                         </Col>

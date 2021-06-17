@@ -30,10 +30,21 @@
 
 .react-datepicker-wrapper {
     width: 100%;
-} 
+}
+
 .react-datepicker__input-container input {
     width: 100%;
-    padding: .375rem .75rem;    
+    padding: .375rem .75rem;
     border: 1px solid #ced4da;
     border-radius: .25rem;
+}
+
+@media (max-width: 480px) {
+    #right-panel-close {
+        position: relative;
+        left: -40px;
+        top: -40px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
 }

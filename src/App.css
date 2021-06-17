@@ -8,3 +8,9 @@
 #header {
     margin-bottom: 32px;
 }
+
+@media (max-width: 480px) {
+    #contact-list-row {
+        padding: 10px;
+    }
+}

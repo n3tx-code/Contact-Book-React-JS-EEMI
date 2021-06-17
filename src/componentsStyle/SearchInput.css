@@ -9,3 +9,9 @@
     outline: none;
     border-bottom: 1px solid #387ad5;
 }
+
+@media (max-width: 480px) {
+    #search {
+        margin-bottom: 20px;
+    }
+}
