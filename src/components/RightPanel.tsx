@@ -2,12 +2,19 @@ import React, {useEffect, useState} from "react";
 import '../componentsStyle/RightPanel.css';
 import {Button, Col, Row, Form,} from "react-bootstrap";
 import {getContacts} from "../store";
+import {registerLocale} from "react-datepicker";
+import DatePicker from "react-datepicker";
+import fr from 'date-fns/locale/fr';
+
+import "react-datepicker/dist/react-datepicker.css";
+
+registerLocale('fr', fr)
 
 function RightPanel(props: any) {
     const [closing, setClosing] = useState(false);
     const [name, setName] = useState("");
     const [forname, setFormane] = useState("");
-    const [birthDate, setBirthDate] = useState("");
+    const [birthDate, setBirthDate] = useState(new Date());
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
 
@@ -15,7 +22,7 @@ function RightPanel(props: any) {
         if (props.state.contactRightPanel != null) {
             setName(props.state.contactRightPanel.name);
             setFormane(props.state.contactRightPanel.forname);
-            setBirthDate(props.state.contactRightPanel.birthDate);
+            setBirthDate(new Date(props.state.contactRightPanel.birthDate));
             setEmail(props.state.contactRightPanel.email);
             setPhone(props.state.contactRightPanel.phone);
         }
@@ -58,9 +65,10 @@ function RightPanel(props: any) {
 
             if (response.ok) {
                 props.updateContactList(getContacts());
-                handleClose();
+                if (!props.state.contactRightPanel) {
+                    handleClose();
+                }
             }
-
         } catch (err) {
             alert('Mauvaise réponse du serveur')
         }
@@ -117,9 +125,9 @@ function RightPanel(props: any) {
                                           onChange={(e) => setFormane(e.target.value)}/>
                         </Form.Group>
                         <Form.Group controlId="contactBirthDate">
-                            <Form.Label className={'mt-4'}>Birth date</Form.Label>
-                            <Form.Control type="text" placeholder="Contact birth date"
-                                          value={birthDate} onChange={(e) => setBirthDate(e.target.value)}/>
+                            <Form.Label className={'mt-4'}>Birth date</Form.Label><br/>
+                            <DatePicker selected={birthDate} onChange={(date: Date) => setBirthDate(date)}
+                                        dateFormat="dd/MM/Y" locale="fr" maxDate={new Date()}/>
                         </Form.Group>
                         <Form.Group controlId="contactEmail">
                             <Form.Label className={'mt-4'}>Email address</Form.Label>

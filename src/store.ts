@@ -11,8 +11,7 @@ const getContacts = async () => {
     try {
         let response = await fetch("http://localhost:3004/contacts");
         if (response.ok) {
-            const json = await response.json();
-            return json;
+            return await response.json();
         } else {
             throw Error;
         }

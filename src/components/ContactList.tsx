@@ -14,8 +14,11 @@ function ContactList(props: any) {
             const contactList = await props.state.contacts;
             setContacts(contactList.filter((contact: Contact) => {
                 if (contact.forname.toLowerCase().includes(props.state.searchValue.toLowerCase()) ||
-                    contact.name.toLowerCase().includes(props.state.searchValue.toLowerCase()))
+                    contact.name.toLowerCase().includes(props.state.searchValue.toLowerCase())) {
+                    contact.birthDate = new Date(contact.birthDate)
                     return contact;
+                }
+
             }))
 
         };
@@ -29,7 +32,7 @@ function ContactList(props: any) {
                     <div className={"col-12 contact-wrapper animate__animated animate__fadeIn"}
                          onClick={() => props.openRightPanel(contact)}>
                         <h5>{contact.name} {contact.forname}</h5><br/>
-                        {contact.birthDate}<br/>
+                        {contact.birthDate.toLocaleDateString()}<br/>
                         <a href={"mailto:" + contact.email}>{contact.email}</a><br/>
                         <a href={"tel:" + contact.phone}>{contact.phone}</a>
                     </div>

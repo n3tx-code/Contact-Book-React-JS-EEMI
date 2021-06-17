@@ -14,8 +14,8 @@
 }
 
 #right-panel-close {
-    position: absolute;
-    left: -20px;
+    position: relative;
+    left: -55px;
     top: 10px;
 }
 
@@ -26,4 +26,14 @@
 
 #contact-delete {
     padding: 0px;
+}
+
+.react-datepicker-wrapper {
+    width: 100%;
+} 
+.react-datepicker__input-container input {
+    width: 100%;
+    padding: .375rem .75rem;    
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
 }
